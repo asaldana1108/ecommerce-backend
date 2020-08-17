@@ -9,6 +9,8 @@ https://github.com/asaldana1108/ecommerce-backend
 ## Walkthrough Video
 https://drive.google.com/file/d/1tU3zpragHQlqJakjAMb0HAURdedtzW_f/view
 
+![](ecommerce-screenshot.png)
+
 ## Badges
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
