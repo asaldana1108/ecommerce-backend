@@ -16,8 +16,7 @@ router.get('/', (req, res) => {
       },
       {
         model: Tag,
-        through: 'ProductTag',
-        as: 'product_tags'
+        through: ProductTag
       }
     ]
   })
@@ -42,8 +41,7 @@ router.get('/:id', (req, res) => {
       },
       {
         model: Tag,
-        through: ProductTag,
-        as: 'product_tags'
+        through: ProductTag
       }
     ]
   })
@@ -73,7 +71,7 @@ router.post('/', (req, res) => {
   Product.create(req.body)
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
-      if (req.body.tagIds.length) {
+      if (req.body.tagIds.leng) {
         const productTagIdArr = req.body.tagIds.map((tag_id) => {
           return {
             product_id: product.id,
@@ -95,11 +93,12 @@ router.post('/', (req, res) => {
 // update product
 router.put('/:id', (req, res) => {
   // update product data
-  Product.update(req.body, {
-    where: {
-      id: req.params.id,
-    },
-  })
+  Product.update(req.body,
+    {
+      where: {
+        id: req.params.id,
+      },
+    })
     .then((product) => {
       // find all associated tags from ProductTag
       return ProductTag.findAll({ where: { product_id: req.params.id } });
